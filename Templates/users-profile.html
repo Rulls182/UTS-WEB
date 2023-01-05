@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Users/Profile</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href= "{{ url_for('static',filename='img/fav.png')}}" rel="icon">
+  <link href= "{{ url_for('static',filename='img/fav.png')}}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href= "{{ url_for('static',filename='bootstrap-dashboard.min.css')}}" rel="stylesheet"/>
+  <link href= "{{ url_for('static',filename='bootstrap-icon-dashboard.css')}}" rel="stylesheet"/>
+  <link href= "{{ url_for('static',filename='boxicons-dashboard.min.css')}}" rel="stylesheet">
+  <link href= "{{ url_for('static',filename='quill.snow.css')}}" rel="stylesheet">
+  <link href= "{{ url_for('static',filename='quill.bubble.css')}}" rel="stylesheet">
+  <link href= "{{ url_for('static',filename='remixicon.css')}}" rel="stylesheet">
+  <link href= "{{ url_for('static',filename='style-simple-datables.css')}}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href= "{{ url_for('static',filename='style-dashboard.css')}}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin - v2.4.0
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href= "{{ url_for('dashboard')}}" class="logo d-flex align-items-center">
+        <img src= "{{ url_for('static',filename='img/1855.PNG')}}" alt="">
+        <span class="d-none d-lg-block"></span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src= "{{ url_for('static',filename='img/IMG_7291.JPG')}}" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">Muhammad Nasrulloh</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Muhammad Nasrulloh</h6>
+              <span>Collage Student</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href= "{{ url_for('profile')}}">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href= "{{ url_for('dashboard')}}">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href= "{{ url_for('index2')}}">
+          <i class="bi bi-person"></i>
+          <span>Data</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href= "{{ url_for('course')}}">
+          <i class="bi bi-person"></i>
+          <span>Course</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href= "{{ url_for('insert')}}">
+          <i class="bi bi-person"></i>
+          <span>Task</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href= "{{ url_for('profile')}}">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+  </aside><!-- End Sidebar-->
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Profile</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href= "{{ url_for('dashboard')}}">Home</a></li>  
+          <li class="breadcrumb-item active">Profile</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+      <div class="row">
+        <div class="col-xl-4">
+
+          <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+              <img src= "{{ url_for('static',filename='img/IMG_7291.JPG')}}" alt="Profile" class="rounded-circle">
+              <h2>Muhammad Nasrulloh</h2>
+              <h3>Collage Student</h3>
+              <div class="social-links mt-2">
+                <a href="https://twitter.com/RulllRull" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="https://web.facebook.com/muhammad.nasrulloh.5895" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="https://www.instagram.com/nasrull.p" class="instagram"><i class="bi bi-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-xl-8">
+
+          <div class="card">
+            <div class="card-body pt-3">
+              <!-- Bordered Tabs -->
+              <ul class="nav nav-tabs nav-tabs-bordered">
+
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+                </li>
+
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
+                </li>
+
+              </ul>
+              <div class="tab-content pt-2">
+
+                <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                  <h5 class="card-title">About</h5>
+                  <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
+
+                  <h5 class="card-title">Profile Details</h5>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label ">Full Name</div>
+                    <div class="col-lg-9 col-md-8">Muhammad Nasrulloh</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">University</div>
+                    <div class="col-lg-9 col-md-8">Politeknik Negeri jakarta</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Job</div>
+                    <div class="col-lg-9 col-md-8">Mahasiswa</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Country</div>
+                    <div class="col-lg-9 col-md-8">INDONESIA</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Address</div>
+                    <div class="col-lg-9 col-md-8">Cikarang Barat, Bekasi, Jawa Barat</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Phone</div>
+                    <div class="col-lg-9 col-md-8">+62 896-0892-8521</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Email</div>
+                    <div class="col-lg-9 col-md-8">rulls5304@gmail.com</div>
+                  </div>
+
+                </div>
+              </div>
+
+                 <!-- Profile Edit Form -->
+                  <div class="tab-pane fade profile-edit pt-3" id="profile-edit" role="tabpabel">
+                    <form>
+                    <div class="row mb-3">
+                      <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                      <div class="col-md-8 col-lg-9">
+                        <img src= "{{ url_for('static',filename='img/IMG_7291.JPG')}}" alt="Profile">
+                        <div class="pt-2">
+                          <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                          <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nama</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="fullName" type="text" class="form-control" id="fullName" value="">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="about" class="col-md-4 col-lg-3 col-form-label">Tentang Diri</label>
+                      <div class="col-md-8 col-lg-9">
+                        <textarea name="about" class="form-control" id="about" style="height: 50px"></textarea>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="company" class="col-md-4 col-lg-3 col-form-label">Tempat Tanggal Lahir</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="datetime-local" />
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Job" class="col-md-4 col-lg-3 col-form-label">Profesi</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="job" type="text" class="form-control" id="Job" value="">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Country" class="col-md-4 col-lg-3 col-form-label">Kewarganegaraan</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="country" type="text" class="form-control" id="Country" value="">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Address" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="address" type="text" class="form-control" id="Address" value="">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Phone" class="col-md-4 col-lg-3 col-form-label">No Handphone</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="phone" type="text" class="form-control" id="Phone" value="">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="email" type="email" class="form-control" id="Email" value="">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Jenis Kelamin" class="col-md-4 col-lg-3 col-form-label">Jenis Kelamin</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="radio" id="Laki-laki" name="Gender" value="Laki-laki">
+                        <label for="Laki-laki">Laki-laki</label>
+                        <input type="radio" id="Perempuan" name="Gender" value="Perempuan">
+                        <label for="Perempuan">Perempuan</label>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Status Pernikahan" class="col-md-4 col-lg-3 col-form-label">Status Pernikahan</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="radio" id="Sudah Nikah" name="Status Pernikahan" value="Sudah Nikah">
+                        <label for="Sudah Nikah">Sudah Nikah</label>
+                        <input type="radio" id="Belum Nikah" name="Status Pernikahan" value="Belum Nikah">
+                        <label for="Belum Nikah">Belum Nikah</label>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Agama" class="col-md-4 col-lg-3 col-form-label">Agama</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input type="radio" id="Islam" name="Agama" value="Islam">
+                        <label for="Islam">Islam</label>
+                        <input type="radio" id="Kristen" name="Agama" value="Kristen">
+                        <label for="Kristen">Kristen</label>
+                        <input type="radio" id="Budha" name="Agama" value="Budha">
+                        <label for="Budha">Budha</label>
+                        <input type="radio" id="Hindu" name="Agama" value="Hindu">
+                        <label for="Hindu">Hindu</label>
+                        <input type="radio" id="Konghuchu" name="Agama" value="Konghuchu">
+                        <label for="Konghuchu">Konghuchu</label>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Pekerjaan" class="col-md-4 col-lg-3 col-form-label">Pekerjaan</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="Pekerjaan" type="text" class="form-control" id="Pekerjaan" value="">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="cars">Jumlah Pendapatan Rata-rata Perbulan :</label>
+                          <select id="Pendapatan" name="Pendapatan">
+                            <option value="1">Rp.500.000 - Rp.2.000.000</option>
+                            <option value="2">Rp.3.000.000 - Rp. 5.000.000</option>
+                            <option value="3">Rp.6.000.000 - Rp.10.000.000</option>
+                            <option value="4">Lebih dari Rp.10.000.000</option>
+                          </select>
+                      </div>
+                    
+                      <div class="row mb-3">
+                        <label for="Hobby"> Bidang yang ditekuni</label><br>
+                            <input type="checkbox" id="vehicle1" name="vehicle1" value="IT">
+                            <label for="vehicle1"> IT</label>
+                            <input type="checkbox" id="vehicle2" name="vehicle2" value="MM">
+                            <label for="vehicle2"> Multimedia</label>
+                            <input type="checkbox" id="vehicle3" name="vehicle3" value="Jaringan">
+                            <label for="vehicle3"> Jaringan</label>
+                            <input type="checkbox" id="vehicle4" name="vehicle4" value="IoT">
+                            <label for="vehicle4"> IoT</label>
+                            <input type="checkbox" id="vehicle5" name="vehicle5" value="Web">
+                            <label for="vehicle5"> Web</label>
+                            <input type="checkbox" id="vehicle6" name="vehicle6" value="Desain">
+                            <label for="vehicle6"> Desain</label>
+                        </div>
+                      
+  
+                      <br>
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                      </div>
+                      
+                    </div>
+
+                    
+  
+                </form><!-- End Profile Edit Form -->
+
+              </div><!-- End Bordered Tabs -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="credits">
+      Designed by <a href= "{{ url_for('index')}}">Nasrull</a>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+   <!-- Vendor JS Files -->
+   <script src= "{{ url_for('static',filename='apexcharts.min.js')}}"></script>
+   <script src= "{{ url_for('static',filename='bootstrapD.bundle.min.js')}}"></script>
+   <script src= "{{ url_for('static',filename='charts.min.js')}}"></script>
+   <script src= "{{ url_for('static',filename='echarts.min.js')}}"></script>
+   <script src= "{{ url_for('static',filename='quill.min.js')}}"></script>
+   <script src= "{{ url_for('static',filename='simple-datables.js')}}"></script>
+   <script src= "{{ url_for('static',filename='tinymce.min.js')}}"></script>
+   <script src= "{{ url_for('static',filename='validateDs.js')}}"></script>
+ 
+   <!-- Template Main JS File -->
+   <script src= "{{ url_for('static',filename='main-dashboard.js')}}"></script>
+
+</body>
+
+</html>

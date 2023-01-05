@@ -1,0 +1,59 @@
+@application.route('/update', methods=['POST'])
+def update(id):
+    if request.method == 'POST':
+        db = getMysqlConnection()
+        id = request.form['id']
+        matkul = request.form['matkul']
+        jenis = request.form['jenis']
+        rincian = request.form['rincian']
+        dl = request.form['dl']
+        pgmpln = request.form['pgmpln']
+        try:
+            cur = db.cursor()
+            cur.execute("UPDATE kuliah SET task=%s WHERE id_matkul=%s", (id,matkul,jenis,rincian,dl,pgmpln,))
+            db.commit()
+            cur.close()
+            print('sukses')
+        except Exception as e:
+            print("Error in SQL:\n", e)
+        finally:
+            db.close()
+        return redirect(url_for('insert'))
+
+    return redirect(url_for('insert'))
+
+
+    onclick="return confirm('Hapus?')
+
+ <!-- <a href="{{url_for('deleteMatkul', id=item[0])}}"> -->
+                                
+                            <!-- </a> --> 
+
+    #Menghapus data
+@application.route('/delete_Matkul/>', methods=['GET'])
+def deleteMatkul(id):
+    db = getMysqlConnection()
+    try:
+        cur = db.cursor()
+        cur.execute("DELETE FROM task WHERE id_matkul=%s", (id,))
+        db.commit()
+        cur.close()     
+        print('sukses')
+    except Exception as e:
+        print("Error in SQL:\n", e)
+    finally:
+        db.close()
+    return redirect(url_for('insert'))
+
+    db = getMysqlConnection()
+    try:
+        cur = db.cursor()
+        cur.execute("DELETE FROM task WHERE id_matkul=%s", (id,))
+        db.commit()
+        cur.close()     
+        print('sukses')
+    except Exception as e:
+        print("Error in SQL:\n", e)
+    finally:
+        db.close()
+    return redirect(url_for('insert'))
